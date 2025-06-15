@@ -1,0 +1,64 @@
+import json
+import urllib.parse
+import urllib.request
+
+def lambda_handler(event, context):
+    try:
+        city = event.get("queryStringParameters", {}).get("city", "")
+        if not city:
+            return {
+                "statusCode": 400,
+                "body": json.dumps({"error": "City not provided"})
+            }
+
+        # Step 1: Get coordinates from city
+        geo_url = f"https://nominatim.openstreetmap.org/search?format=json&q={urllib.parse.quote(city)}"
+        geo_req = urllib.request.Request(geo_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(geo_req) as geo_response:
+            geo_data = json.loads(geo_response.read())
+
+        if not geo_data:
+            return {
+                "statusCode": 404,
+                "body": json.dumps({"error": "City not found"})
+            }
+
+        lat = geo_data[0]["lat"]
+        lon = geo_data[0]["lon"]
+
+        # Step 2: Use Open-Meteo API with those coordinates
+        aqi_url = f"https://air-quality-api.open-meteo.com/v1/air-quality?latitude={lat}&longitude={lon}&hourly=pm10,pm2_5,carbon_monoxide"
+        with urllib.request.urlopen(aqi_url) as aqi_response:
+            aqi_data = json.loads(aqi_response.read())
+
+        # Extract latest data
+        times = aqi_data["hourly"]["time"]
+        pm25 = aqi_data["hourly"]["pm2_5"]
+        pm10 = aqi_data["hourly"]["pm10"]
+        co = aqi_data["hourly"]["carbon_monoxide"]
+
+        if not times or not pm25:
+            return {
+                "statusCode": 404,
+                "body": json.dumps({"error": "Air quality data not available"})
+            }
+
+        latest_index = len(times) - 1
+
+        return {
+            "statusCode": 200,
+            "headers": {"Access-Control-Allow-Origin": "*"},
+            "body": json.dumps({
+                "city": city,
+                "timestamp": times[latest_index],
+                "pm2_5": round(pm25[latest_index], 2),
+                "pm10": round(pm10[latest_index], 2),
+                "co": round(co[latest_index], 2)
+            })
+        }
+
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"error": str(e)})
+        }
