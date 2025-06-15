@@ -30,8 +30,7 @@ The project integrates with AWS Lambda for live air quality metrics and uses Ope
 
 ## 📸 Screenshot
 
-![Air Quality Forecast Dashboard](src/assets/Screenshot 2025-06-15 204046.png)
-(src/assets/Screenshot 2025-06-15 204112.png)
+![Air Quality Forecast Dashboard](https://private-user-images.githubusercontent.com/160618505/455267154-0ad4ec1d-d3d2-4283-80e6-2fca127ba34a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTAwMDA5MDgsIm5iZiI6MTc1MDAwMDYwOCwicGF0aCI6Ii8xNjA2MTg1MDUvNDU1MjY3MTU0LTBhZDRlYzFkLWQzZDItNDI4My04MGU2LTJmY2ExMjdiYTM0YS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYxNVQxNTE2NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yMTc4NjUwNmYwODkyMTJmYjMwMWRhNDRhNGVkN2E2ZDI5NDkxNDI2NTI4ZmEyNmMxYjI2OWVhZWY4NWRkMTcxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.giyBqxUCgpU9S0KZVFrjeT5Iq_3_Yk-UWwm4ORazrAY)
 
 
 _This dashboard displays real-time PM2.5 and PM10 levels for any city across India, along with a 24-hour forecast chart using Open-Meteo data._
