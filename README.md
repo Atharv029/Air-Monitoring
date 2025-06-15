@@ -30,7 +30,7 @@ The project integrates with AWS Lambda for live air quality metrics and uses Ope
 
 ## 📸 Screenshot
 
-![Air Quality Forecast Dashboard](./assets/screenshot.png)
+![Air Quality Forecast Dashboard](https://github.com/Atharv029/Air-Monitoring/issues/1#issue-3147672448)
 
 _This dashboard displays real-time PM2.5 and PM10 levels for any city across India, along with a 24-hour forecast chart using Open-Meteo data._
 
